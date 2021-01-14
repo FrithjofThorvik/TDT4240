@@ -33,10 +33,12 @@ public class Application extends Game {
 	
 	@Override
 	public void create () {
-		gsm = new GameScreenManager(this);
-		assets = new AssetManager();
 		batch = new SpriteBatch();
-		shapeBatch = new ShapeRenderer();
+		shapeBatch = new ShapeRenderer(); // Before managers (NULL pointer)
+
+		// Create Managers
+		assets = new AssetManager(); // Before gsm
+		gsm = new GameScreenManager(this);
 	}
 
 	@Override
@@ -48,8 +50,10 @@ public class Application extends Game {
 	
 	@Override
 	public void dispose () {
+		super.dispose();
 		batch.dispose();
 		shapeBatch.dispose();
 		assets.dispose();
+		gsm.dispose();
 	}
 }
