@@ -57,7 +57,7 @@ public class PlayState extends State {
         sb.begin();
         sb.draw(helicopter.getSprite(), helicopter.getPosition().x, helicopter.getPosition().y);
         sb.draw(helicopterEnemy.getSprite(), helicopterEnemy.getPosition().x, helicopterEnemy.getPosition().y);
-        font.draw(sb, helicopter.getPositionString(), 10,  Exercise1.HEIGHT - 10);
+        font.draw(sb, helicopter.getPositionString(), 10,  Exercise1.HEIGHT - 40);
         sb.end();
     }
 

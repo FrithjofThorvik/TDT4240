@@ -15,6 +15,7 @@ public class Helicopter {
     private Texture helicopter;
     private Sprite sprite;
     private Rectangle bounds;
+    private boolean directionLeft;
 
     private Array<Sprite> frames;
     private Animation helicopterAnimation;
@@ -25,6 +26,7 @@ public class Helicopter {
         velocity = new Vector3(-2, -5, 0);
         helicopter = new Texture("heli1.png");
         sprite = new Sprite(helicopter);
+        directionLeft = true;
 
         // Add Animation
         frames = new Array<Sprite>();
@@ -49,7 +51,16 @@ public class Helicopter {
             velocity.y = -velocity.y;
         else if ((position.x < 0) || (position.x + helicopterAnimation.getFrame().getWidth() > Exercise1.WIDTH)) {
             velocity.x = -velocity.x;
+            //helicopterAnimation.flip();
+        }
+
+        // Control Flip
+        if (velocity.x > 0 && directionLeft) {
             helicopterAnimation.flip();
+            directionLeft = false;
+        } else if (velocity.x < 0 && !directionLeft) {
+            helicopterAnimation.flip();
+            directionLeft = true;
         }
 
         // Add Velocity
@@ -89,10 +100,10 @@ public class Helicopter {
         // View X Plane
         if ((x < position.x) && (velocity.x > 0)) {
             velocity.x = -velocity.x;
-            helicopterAnimation.flip();
+            //helicopterAnimation.flip();
         } else if ((x > (position.x + helicopter.getWidth())) && (velocity.x < 0)){
             velocity.x = -velocity.x;
-            helicopterAnimation.flip();
+            //helicopterAnimation.flip();
         }
 
         // View Y-Plane
