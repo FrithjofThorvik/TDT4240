@@ -1,6 +1,7 @@
 package com.mygdx.game.utils;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
@@ -24,27 +25,21 @@ public class B2DContactListener implements ContactListener {
 
         if (fixtureA.getUserData() == "paddle") {
             ball.changeDirection();
-            //ball.increaseSpeed();
-            Gdx.app.log("Paddle", fixtureA.getUserData().toString());
-        } else if (fixtureA.getUserData() == "goal"){
-            ball.centerPosition();
-            Gdx.app.log("Goal", fixtureA.getUserData().toString());
+        } else if (fixtureA.getUserData() == "playerGoal"){
+            System.out.println("YOU LOST!!!");
+            ball.changeDirection();
+        } else if (fixtureA.getUserData() == "enemyGoal") {
+            System.out.println("YOU WON!!!");
+            ball.changeDirection();
+        }
+        else if (fixtureA.getUserData() == "wall") {
+            ball.bounce();
         }
     }
 
-    // Called when two Fixtures no longer collide
-    @Override
-    public void endContact(Contact contact) {
-        System.out.println("End Contact");
-    }
+    @Override public void endContact(Contact contact){}
 
-    @Override
-    public void preSolve(Contact contact, Manifold oldManifold) {
+    @Override public void preSolve(Contact contact, Manifold oldManifold) {}
 
-    }
-
-    @Override
-    public void postSolve(Contact contact, ContactImpulse impulse) {
-
-    }
+    @Override public void postSolve(Contact contact, ContactImpulse impulse) {}
 }

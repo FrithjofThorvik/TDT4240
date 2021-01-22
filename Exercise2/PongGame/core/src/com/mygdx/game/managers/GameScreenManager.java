@@ -45,7 +45,7 @@ public class GameScreenManager {
     private void initGameScreen() {
         this.gameScreens = new HashMap<STATE, AbstractScreen>();
         this.gameScreens.put(STATE.PLAY, new GameScreen(app));          // Creates GameScreen
-        this.gameScreens.put(STATE.MAIN_MENU, new MainMenuScreen(app)); // Creates MainMenuSCreen
+        this.gameScreens.put(STATE.MAIN_MENU, new MainMenuScreen(app)); // Creates MainMenuScreen
     }
 
     // Set predefined screen

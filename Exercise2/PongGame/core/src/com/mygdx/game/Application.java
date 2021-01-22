@@ -1,10 +1,8 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.game.managers.GameScreenManager;
@@ -24,7 +22,6 @@ public class Application extends Game {
 
 	// Managers
 	public GameScreenManager gsm;
-	public AssetManager assets;
 
 	//Batches
 	public SpriteBatch batch;
@@ -32,8 +29,7 @@ public class Application extends Game {
 
 	// Methods
 	@Override
-	public void create() { // First function to run
-		Gdx.app.log(APP_TITLE, "create()");
+	public void create() {
 
 		// Setup batches
 		batch = new SpriteBatch();
@@ -41,11 +37,10 @@ public class Application extends Game {
 
 		// Setup managers
 		gsm = gsm.getGameScreenManager(this);
-		assets = new AssetManager();
 	}
 
 	@Override
-	public void render() { // Third function & updates
+	public void render() {
 		super.render();
 
 		// Exit app when pressing ESC button
@@ -54,14 +49,12 @@ public class Application extends Game {
 	}
 
 	@Override
-	public void dispose() {	// Last function
+	public void dispose() {
 		super.dispose();
-		Gdx.app.log(APP_TITLE, "dispose()");
 
 		// Dispose this class's objects (Remember order of disposing)
 		batch.dispose();
 		shapeBatch.dispose();
-		assets.dispose();
 		gsm.dispose();
 	}
 }

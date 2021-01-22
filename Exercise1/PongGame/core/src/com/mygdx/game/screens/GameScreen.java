@@ -46,17 +46,17 @@ public class GameScreen extends AbstractScreen {
         this.camera = new OrthographicCamera(); // Cameras are lightweight (Not Views...)
         this.camera.setToOrtho(false, Application.V_WIDTH, Application.V_HEIGHT);
 
-        b2dr = new Box2DDebugRenderer();
+        this.b2dr = new Box2DDebugRenderer();
+        this.world = new World(new Vector2(0f, 0f), false); // Gravity => 0
     }
 
     @Override
     public void show() {
-        world = new World(new Vector2(0f, 0f), false); // Gravity => 0
         initArena();
         world.setContactListener(new B2DContactListener(pong));
 
-        app.batch.setProjectionMatrix(camera.combined);
-        app.shapeBatch.setProjectionMatrix(camera.combined);
+        //app.batch.setProjectionMatrix(camera.combined);
+        //app.shapeBatch.setProjectionMatrix(camera.combined);
     }
 
     @Override
@@ -85,7 +85,7 @@ public class GameScreen extends AbstractScreen {
         if (pong.position.y + pong.radius > camera.viewportHeight / PPM || pong.position.y - pong.radius < 0)
             pong.velocity.y = -pong.velocity.y;
 
-        stage.act(dt);
+        //stage.act(dt);
     }
 
     @Override
@@ -93,7 +93,7 @@ public class GameScreen extends AbstractScreen {
         super.render(dt);
 
         b2dr.render(world, camera.combined.cpy().scl(PPM));
-        stage.draw();
+        //stage.draw();
     }
 
     @Override

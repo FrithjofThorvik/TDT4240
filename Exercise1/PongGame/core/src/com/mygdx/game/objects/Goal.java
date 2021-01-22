@@ -15,7 +15,6 @@ public class Goal {
         position = new Vector2(body.getPosition());
         this.borderX = borderX;
         this.height = height;
-
     }
 
     public void handleCollide(Ball ball, boolean leftMovement) {

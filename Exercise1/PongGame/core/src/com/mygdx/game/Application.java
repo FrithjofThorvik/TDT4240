@@ -25,7 +25,7 @@ public class Application extends Game {
 
 	// Managers
 	public GameScreenManager gsm;
-	public AssetManager assets;
+	//public AssetManager assets;
 
 	// Batches
 	public SpriteBatch batch;
@@ -37,7 +37,7 @@ public class Application extends Game {
 		shapeBatch = new ShapeRenderer(); // Before managers (NULL pointer)
 
 		// Create Managers
-		assets = new AssetManager(); // Before gsm
+		//assets = new AssetManager(); // Before gsm
 		gsm = new GameScreenManager(this);
 	}
 
@@ -53,7 +53,7 @@ public class Application extends Game {
 		super.dispose();
 		batch.dispose();
 		shapeBatch.dispose();
-		assets.dispose();
+		//assets.dispose();
 		gsm.dispose();
 	}
 }
