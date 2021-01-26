@@ -30,7 +30,7 @@ public class GameScreenManager {
         this.app = app;
 
         initGameScreen();
-        setScreen(STATE.PLAY);
+        setScreen(STATE.MAIN_MENU);
     }
 
     // Create singleton instance

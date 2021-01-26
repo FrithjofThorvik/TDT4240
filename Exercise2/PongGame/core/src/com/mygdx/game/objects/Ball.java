@@ -54,8 +54,12 @@ public class Ball {
     public void changeDirection() {
         float rand = (float)Math.random() * 2f + 0.5f;
         this.velocity.x = -this.velocity.x;
-        System.out.println(rand);
-        if (this.velocity.y > 1.5f) { this.velocity.y = -5f / PPM; } else { this.velocity.y = 5f / PPM; }
+
+        if (this.velocity.y > 1.5f) {
+            this.velocity.y = -5f / PPM;
+        } else {
+            this.velocity.y = 5f / PPM;
+        }
 
         this.velocity.y = rand * this.velocity.y;
     }
